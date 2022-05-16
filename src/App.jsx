@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ClassCounter from './components/ClassCounter';
+import Counter from './components/Counter';
 
 function App() {
-  const initialText = 'Hi, I am simple text.';
-  const [text, setText] = useState(initialText);
-
-  function onChangeText(value) {
-    setText(value);
-  }
-
   return (
     <div className="App">
-      <h1>{text}</h1>
-      <input type="text" value={text} onChange={(event) => onChangeText(event.target.value)} />
+      <ClassCounter />
+      <ClassCounter />
+      <Counter />
+      <Counter />
+      <Counter />
     </div>
   );
 }
