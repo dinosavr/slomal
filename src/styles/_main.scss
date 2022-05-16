@@ -1,0 +1,14 @@
+#root {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.App{
+    width: 1000px;
+}
+.post{
+    display: flex;
+    border: 2px solid grey;
+    justify-content: space-between;
+    align-items: center;
+}
