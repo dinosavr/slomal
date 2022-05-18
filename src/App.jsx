@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import PostList from './components/PostList';
 import './styles/App.scss';
+import ButtonCustom from './components/UI/buttons/ButtonCustom';
 
 function App() {
   const [posts] = useState([
@@ -38,6 +39,7 @@ function App() {
         <TextField id="filled-basic" label="Description" variant="outlined" />
         <Button variant="contained">Add Post</Button>
       </Box>
+      <ButtonCustom>Click Me too</ButtonCustom>
       <PostList posts={posts} title="Список постов" />
       <PostList posts={postsJava} title="Список постов Java" />
       <Box sx={{ width: '100%', maxWidth: 500 }}>
