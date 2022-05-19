@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import 'normalize.css';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import PostList from './components/PostList';
 import './styles/App.scss';
-import ButtonCustom from './components/UI/buttons/ButtonCustom';
+import PostForm from './components/UI/buttons/PostForm';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -21,48 +19,13 @@ function App() {
     { id: 3, title: 'Item Java 3', desc: 'Life is Java 3' },
   ]);
 
-  const [post, setPost] = useState({ id: 1, title: 'Just title', desc: 'Just description' });
-
-  const addNewPost = () => {
-    const newPost = { ...post, id: posts.length + 1 };
-    setPosts([...posts, newPost]);
-    setPost({ title: '', desc: '' });
+  const createPost = (newPost) => {
+    setPosts([...posts, { ...newPost, id: posts.length + 1 }]);
   };
 
   return (
     <div className="App">
-      <Box
-        component="form"
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          width: 600,
-          mt: 2,
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          id="outlined-basic"
-          label="Title"
-          variant="outlined"
-          value={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
-        />
-        <TextField
-          id="filled-basic"
-          label="Description"
-          variant="outlined"
-          value={post.desc}
-          onChange={(e) => setPost({ ...post, desc: e.target.value })}
-        />
-        <Button onClick={addNewPost} variant="contained">
-          Add Post
-        </Button>
-      </Box>
-      <ButtonCustom onClick={addNewPost}>Click Me too</ButtonCustom>
-
+      <PostForm createPost={createPost} />
       <PostList posts={posts} title="Список постов" />
       <PostList posts={postsJava} title="Список постов Java" />
 

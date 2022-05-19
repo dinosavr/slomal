@@ -6,12 +6,10 @@ function Counter() {
 
   function increment() {
     setCounter(counter + 1);
-    console.log('Like up');
   }
 
   function decrement() {
     setCounter(counter - 1);
-    console.log('Like down');
   }
 
   return (

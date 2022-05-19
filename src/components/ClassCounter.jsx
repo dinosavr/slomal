@@ -13,13 +13,11 @@ export default class ClassCounter extends React.PureComponent {
   increment() {
     const { count } = this.state;
     this.setState({ count: count + 1 });
-    console.log('Class Like up', count + 1);
   }
 
   decrement() {
     const { count } = this.state;
     this.setState({ count: count - 1 });
-    console.log('Class Like down', count - 1);
   }
 
   render() {
