@@ -9,7 +9,7 @@ import './styles/App.scss';
 import ButtonCustom from './components/UI/buttons/ButtonCustom';
 
 function App() {
-  const [posts] = useState([
+  const [posts, setPosts] = useState([
     { id: 1, title: 'Item 1', desc: 'Life is short. Be strong 1' },
     { id: 2, title: 'Item 2', desc: 'Life is short. Be strong 2' },
     { id: 3, title: 'Item 3', desc: 'Life is short. Be strong 3' },
@@ -20,6 +20,14 @@ function App() {
     { id: 2, title: 'Item Java 2', desc: 'Life is Java 2' },
     { id: 3, title: 'Item Java 3', desc: 'Life is Java 3' },
   ]);
+
+  const [post, setPost] = useState({ id: 1, title: 'Just title', desc: 'Just description' });
+
+  const addNewPost = () => {
+    const newPost = { ...post, id: posts.length + 1 };
+    setPosts([...posts, newPost]);
+    setPost({ title: '', desc: '' });
+  };
 
   return (
     <div className="App">
@@ -35,13 +43,29 @@ function App() {
         noValidate
         autoComplete="off"
       >
-        <TextField id="outlined-basic" label="Title" variant="outlined" />
-        <TextField id="filled-basic" label="Description" variant="outlined" />
-        <Button variant="contained">Add Post</Button>
+        <TextField
+          id="outlined-basic"
+          label="Title"
+          variant="outlined"
+          value={post.title}
+          onChange={(e) => setPost({ ...post, title: e.target.value })}
+        />
+        <TextField
+          id="filled-basic"
+          label="Description"
+          variant="outlined"
+          value={post.desc}
+          onChange={(e) => setPost({ ...post, desc: e.target.value })}
+        />
+        <Button onClick={addNewPost} variant="contained">
+          Add Post
+        </Button>
       </Box>
-      <ButtonCustom>Click Me too</ButtonCustom>
+      <ButtonCustom onClick={addNewPost}>Click Me too</ButtonCustom>
+
       <PostList posts={posts} title="Список постов" />
       <PostList posts={postsJava} title="Список постов Java" />
+
       <Box sx={{ width: '100%', maxWidth: 500 }}>
         <Typography variant="h1" component="div" gutterBottom>
           h1. Heading

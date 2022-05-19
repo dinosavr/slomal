@@ -3,21 +3,23 @@ import PropTypes from 'prop-types';
 import classes from './ButtonCustom.module.scss';
 
 function ButtonCustom(props) {
-  const { disabled, children } = props;
+  const { disabled, onClick, children } = props;
   const { MyBtn } = classes;
   return (
-    <button type="button" disabled={disabled} className={MyBtn}>
+    <button type="button" disabled={disabled} onClick={onClick} className={MyBtn}>
       {children}
     </button>
   );
 }
 
 ButtonCustom.propTypes = {
-  disabled: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
   children: PropTypes.string,
 };
 
 ButtonCustom.defaultProps = {
+  onClick: null,
   disabled: false,
   children: 'Ok',
 };
