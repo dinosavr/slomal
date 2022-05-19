@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import ButtonCustom from './ButtonCustom';
 
 function PostForm({ createPost }) {
   const [post, setPost] = useState({
@@ -13,7 +12,6 @@ function PostForm({ createPost }) {
 
   const addNewPost = () => {
     const newPost = { ...post };
-    // setPosts([...posts, newPost]);
     createPost(newPost);
     setPost({ title: '', desc: '' });
   };
@@ -28,6 +26,7 @@ function PostForm({ createPost }) {
           justifyContent: 'space-between',
           width: 600,
           mt: 2,
+          mb: 2,
         }}
         noValidate
         autoComplete="off"
@@ -50,7 +49,6 @@ function PostForm({ createPost }) {
           Add Post
         </Button>
       </Box>
-      <ButtonCustom onClick={addNewPost}>Click Me too</ButtonCustom>
     </div>
   );
 }

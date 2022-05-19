@@ -13,21 +13,20 @@ function App() {
     { id: 3, title: 'Item 3', desc: 'Life is short. Be strong 3' },
   ]);
 
-  const [postsJava] = useState([
-    { id: 1, title: 'Item Java 1', desc: 'Life is Java 1' },
-    { id: 2, title: 'Item Java 2', desc: 'Life is Java 2' },
-    { id: 3, title: 'Item Java 3', desc: 'Life is Java 3' },
-  ]);
-
   const createPost = (newPost) => {
-    setPosts([...posts, { ...newPost, id: posts.length + 1 }]);
+    const maxId = Math.max(...posts.map((o) => o.id));
+    const nextId = (maxId >= 0) ? maxId + 1 : 0;
+    setPosts([...posts, { ...newPost, id: nextId }]);
+  };
+
+  const removePost = (postId) => {
+    setPosts(posts.filter((p) => p.id !== postId));
   };
 
   return (
     <div className="App">
       <PostForm createPost={createPost} />
-      <PostList posts={posts} title="Список постов" />
-      <PostList posts={postsJava} title="Список постов Java" />
+      <PostList remove={removePost} posts={posts} title="List of posts" />
 
       <Box sx={{ width: '100%', maxWidth: 500 }}>
         <Typography variant="h1" component="div" gutterBottom>
