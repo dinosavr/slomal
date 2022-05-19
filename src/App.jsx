@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import PostList from './components/PostList';
 import './styles/App.scss';
 import PostForm from './components/UI/buttons/PostForm';
+import Filter from './components/Filter';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <PostForm createPost={createPost} />
+      <Filter />
       <PostList remove={removePost} posts={posts} title="List of posts" />
 
       <Box sx={{ width: '100%', maxWidth: 500 }}>
