@@ -9,7 +9,6 @@ function PostItem(props) {
       <div className="post__content">
         <h3 className="post__title">
           {title}
-          {id}
         </h3>
         <div className="post__desc">{desc}</div>
       </div>

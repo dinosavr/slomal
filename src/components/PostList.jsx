@@ -28,7 +28,13 @@ export default function PostList(props) {
     <div className="PostList">
       <h1 className="text-center">{title}</h1>
       {isPostsNotEmpty ? (
-        posts.map((post) => <PostItem remove={remove} post={post} key={post.id} />)
+        posts.map((post, index) => (
+          <PostItem
+            remove={remove}
+            post={{ ...post, id: index }}
+            key={post.id || index}
+          />
+        ))
       ) : (
         <h3 className="noPostMsg text-center">No posts. Sorry ... </h3>
       )}

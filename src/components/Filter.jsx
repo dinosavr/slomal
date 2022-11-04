@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import PropTypes from 'prop-types';
+import { categoryWords } from '../data/words';
 
-function Filter() {
-  const selectValueDef = 20;
-  const [typesSort] = useState([
-    { id: 1, name: 'ID', value: 10 },
-    { id: 2, name: 'Name2', value: 20 },
-    { id: 3, name: 'Desc', value: 30 },
-  ]);
-  const [typeSort, setTypeSort] = useState(selectValueDef);
+function Filter({ filter }) {
+  // const selectValueDef = 20;
+  const [typesSort] = useState(categoryWords);
+  const [typeSort, setTypeSort] = useState('');
 
   const handleChange = (event) => {
     setTypeSort(event.target.value);
+    filter(event.target.value);
   };
 
   return (
@@ -34,6 +32,12 @@ function Filter() {
   );
 }
 
-// Filter.propTypes = {};
+Filter.propTypes = {
+  filter: PropTypes.func,
+};
+
+Filter.defaultProps = {
+  filter: null,
+};
 
 export default Filter;
