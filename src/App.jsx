@@ -8,6 +8,7 @@ import PostForm from './components/UI/buttons/PostForm';
 import Filter from './components/Filter';
 
 import { items } from './data/words';
+import { Counter } from './features/counter/Counter';
 
 function App() {
   const [posts, setPosts] = useState(items);
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <Counter />
       <Box sx={{ width: '100%', maxWidth: 500 }}>
         <Typography variant="h1" component="div" gutterBottom>
           Привет
